@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# creates a directory and cds into it
+function new_dir {
+	mkdir -p "$@" && cd "$@"
+}
+
+# activates virtualenv from project root
+function activate {
+	if [ -f activate ]; then
+		source "../bin/activate"
+	else
+		source "venv/bin/activate"
+	fi
+}
