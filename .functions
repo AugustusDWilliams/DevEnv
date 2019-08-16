@@ -13,3 +13,10 @@ function activate {
 		source "venv/bin/activate"
 	fi
 }
+
+#Git Multi Command Function
+function git_commit() {
+    git add .
+    git commit -a -m "$1"
+    git push -u origin master
+}

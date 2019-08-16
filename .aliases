@@ -27,3 +27,8 @@ if [ -d /etc/apt ]; then
     alias dist-upgrade='sudo apt-get dist-upgrade'
     alias list="apt list --installed"
 fi
+
+# Version Control
+alias gs="git status"
+alias gd="git add ."
+alias gp="git push -u origin master"
