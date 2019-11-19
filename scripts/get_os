@@ -1,0 +1,21 @@
+#!python3
+from platform import platform
+
+
+def get_platform():
+    system_platform = platform().lower()
+    if "win" in system_platform:
+        operating_system = "windows"
+    elif "linux" in system_platform:
+        operating_system = "linux"
+    else:
+        operating_system = "mac"
+    return operating_system
+
+def main():
+    operating_system = get_platform()
+    print(operating_system)
+
+
+if __name__ == "__main__":
+    main()

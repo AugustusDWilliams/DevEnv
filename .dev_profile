@@ -14,6 +14,11 @@ if [ -d "$DEVPATH/bin" ] ; then
     PATH="$DEVPATH/bin:$PATH"
 fi
 
+# Load Scripts
+if [ -d "$DEVPATH/scripts" ] ; then
+    PATH="$DEVPATH/scripts:$PATH"
+fi
+
 # Set Aliases
 if [ -f $DEVPATH/.aliases ]; then
      . $DEVPATH/.aliases
@@ -23,3 +28,4 @@ fi
 if [ -f $DEVPATH/.functions ]; then
      . $DEVPATH/.functions
 fi
+
