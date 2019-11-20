@@ -1,15 +1,15 @@
 #!/usr/bin/env zsh
 
 #Determines the Operating System
-script_path="$HOME/DevEnv/scripts/get_os"
+export DEVENV="$HOME/DevEnv"
+script_path="$DEVENV/scripts/get_os"
 operating_system=$($script_path)
-DEVPATH="$HOME/DevEnv"
-DEVPATH_MAC="$DEVPATH/Mac"
+
 
 if [[ $operating_system == "windows" ]]; then
-    echo "Loading Windows Functions"
+    export DEVENV_PATH="$DEVENV/Windows"
 elif [[ $operating_system == "linux" ]]; then
-    echo "Loading Linux Functions"
+    export DEVENV_PATH="$DEVENV/Linux"
 elif [[ $operating_system == "mac" ]]; then
-    echo "$DEVPATH_MAC"
+    export DEVENV_PATH="$DEVENV/Mac"
 fi

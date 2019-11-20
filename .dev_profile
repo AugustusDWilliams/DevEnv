@@ -1,9 +1,18 @@
 #!/usr/bin/env zsh
 
-#Set DEVPATH PATH
-#DEVPATH=$PWD
-DEVPATH="$HOME/DevEnv"
-DEVPATH_MAC="$DEVPATH/Mac"
+#Set DEVENV PATH
+export DEVENV="$HOME/DevEnv"
+
+#Determines the Operating System
+script_path="$DEVENV/scripts/get_os"
+operating_system=$($script_path)
+if [[ $operating_system == "windows" ]]; then
+    export DEVENV_PATH="$DEVENV/Windows"
+elif [[ $operating_system == "linux" ]]; then
+    export DEVENV_PATH="$DEVENV/Linux"
+elif [[ $operating_system == "mac" ]]; then
+    export DEVENV_PATH="$DEVENV/Mac"
+fi
 
 # Set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
@@ -11,22 +20,22 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Set PATH so it includes DevEnv bin
-if [ -d "$DEVPATH/bin" ] ; then
-    PATH="$DEVPATH/bin:$PATH"
+if [ -d "$DEVENV/bin" ] ; then
+    PATH="$DEVENV/bin:$PATH"
 fi
 
 # Load Scripts
-if [ -d "$DEVPATH/scripts" ] ; then
-    PATH="$DEVPATH/scripts:$PATH"
+if [ -d "$DEVENV/scripts" ] ; then
+    PATH="$DEVENV/scripts:$PATH"
 fi
 
 # Set Aliases
-if [ -f $DEVPATH/.aliases ]; then
-     . $DEVPATH/.aliases
+if [ -f $DEVENV/.aliases ]; then
+     . $DEVENV/.aliases
 fi
 
 # Load functions
-if [ -f $DEVPATH/.functions ]; then
-     . $DEVPATH/.functions
+if [ -f $DEVENV/.functions ]; then
+     . $DEVENV/.functions
 fi
 
