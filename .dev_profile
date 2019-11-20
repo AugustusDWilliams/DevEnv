@@ -3,6 +3,7 @@
 #Set DEVPATH PATH
 #DEVPATH=$PWD
 DEVPATH="$HOME/DevEnv"
+DEVPATH_MAC="$DEVPATH/Mac"
 
 # Set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
