@@ -3,7 +3,7 @@
 alias python=python3
 #alias pip=pip3
 alias pip="python -m pip"
-alias open=nautilus
+#alias open=nautilus
 alias rename=mv
 alias create=touch
 alias freeze="pip freeze > requirements.txt"
@@ -26,7 +26,6 @@ if [ -d /etc/apt ]; then
     alias autoremove='sudo apt-get autoremove'
     alias dist-upgrade='sudo apt-get dist-upgrade'
     alias list="apt list --installed"
-    alias azkaban='open .'
 fi
 
 # Version Control
