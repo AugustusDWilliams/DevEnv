@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+# creates a directory and cds into it
+function new_dir {
+	mkdir -p "$@" && cd "$@"
+}
+
+# creates a new virtualenv named "venv" and activates it
+function new_venv {
+	virtualenv -p python3 venv && source "venv/bin/activate"
+}
+
+# activates virtualenv from project root
+function activate {
+	if [ -f activate ]; then
+		source "../bin/activate"
+	else
+		source "venv/bin/activate"
+	fi
+}
+
+#Git Multi Command Function
+function git_commit() {
+    git add .
+    git commit -a -m "$1"
+    git push -u origin master
+}
+
+#Lists the connected serial ports
+function ports(){
+	target_regex=\/dev\/ttyUSB
+	target_dir="/dev/ttyUSB*"
+
+	for comport in /dev/ttyUSB*; do
+    	port="${comport#$target_regex}"
+    	echo $port
+	done
+}

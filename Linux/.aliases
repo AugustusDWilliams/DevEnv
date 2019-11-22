@@ -1,0 +1,53 @@
+#!/usr/bin/env zsh
+
+
+#Python Aliases
+#alias pip=pip3
+alias python=python3
+alias pip="python -m pip"
+alias freeze="pip freeze > requirements.txt"
+alias requirements="pip install -r requirements.txt"
+
+
+#Terminal Aliases
+alias rename=mv
+alias create=touch
+alias reload="source ~/.zshrc"
+alias open=nautilus
+
+
+# Sudofix (fixes aliases not being able to run when using sudo)
+alias sudo='sudo '
+
+
+# Package Manager Aliases
+if [ -d /etc/apt ]; then
+    # apt-get
+    alias clean='sudo apt-get clean'
+    alias purge='sudo apt-get purge'
+    alias search='sudo apt-get search'
+    alias update='sudo apt-get update'
+    alias remove='sudo apt-get remove'
+    alias upgrade='sudo apt-get upgrade'
+    alias install='sudo apt-get install'
+    alias autoremove='sudo apt-get autoremove'
+    alias dist-upgrade='sudo apt-get dist-upgrade'
+    alias list="apt list --installed"
+fi
+
+
+# Version Control
+alias gs="git status"
+alias ga="git add ."
+alias gp="git push -u origin master"
+
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+alias gh='git hist '
+
+alias got='git '
+alias get='git '
