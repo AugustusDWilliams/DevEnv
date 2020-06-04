@@ -27,10 +27,10 @@ def check_for_archive_version(project_archive):
         print("{} already archived".format(project_archive.name))
         return False
     else:
-    #    os.mkdir(str(project_archive))
+        os.mkdir(str(project_archive))
         return True
 
-def main_func(path):
+def main(path):
     root = Path(os.getcwd())
     name = get_project_name(root)
     project = ARCHIVES / name
@@ -42,17 +42,13 @@ def main_func(path):
     if proceed:
         src = "{}/{}".format(root, name)
         dst = "{}/{}/{}".format(ARCHIVES, name, archive_version)
-        print(src)
-        print(dst)
         shutil.copytree(src, dst)
         print("{} Archived".format(archive_version))
 
 if __name__ == "__main__":
     HOME = Path(".").home()
     ARCHIVES = HOME / "Archives"
-    #main(sys.argv[1:])
-    #root = "/home/development/projects/datamanager"
-    root = os.getcwd()
-    #print(root)
+    ##main(sys.argv[1:])
+    #root = "/home/development/Code/Projects/sensorteststation"
     #os.chdir(root)
-    main_func(root)
+    #main(root)
