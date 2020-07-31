@@ -1,7 +1,0 @@
-#!/usr/bin/env zsh
-
-DEVPATH=$PWD
-
-if [ -f $DEVPATH/.aliases ]; then
-     . $DEVPATH/.aliases
-fi

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+#Set ZSH_HOME PATH
+export ZSHENV="$DEVCONFIG/zsh"
+
+# Set configs
+. $ZSHENV/keybindings

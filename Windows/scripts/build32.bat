@@ -1,1 +1,0 @@
-python32 setup.py build
