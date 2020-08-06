@@ -1,0 +1,39 @@
+#!python3
+import os
+import re
+import sys
+import shutil
+from pathlib import Path
+
+
+def get_project_name(path):
+    return path.name.lower()
+
+def check_if_dir_exists(project):
+    return project.exists()
+
+def get_version(filename):
+    with open(filename, "r") as file:
+        data = file.read()
+        regex = r"(\d+.\d+.\d+)"
+        match = re.search(regex, data).group(0)
+        return match
+
+def get_version_msg(project_name, filename):
+    prev_version = get_version(filename)
+    new_version = get_incremented_version(prev_version)
+    return
+
+def main():
+    root = Path(os.getcwd())
+    project_name = get_project_name(root)
+    project = root / project_name
+    project_exists = check_if_dir_exists(project)
+    if project_exists:
+        init_file = project / "__init__.py"
+        version = get_version(init_file)
+        msg = f"Project: {project_name}\nVersion: {version}"
+        print(msg)
+
+if __name__ == "__main__":
+    main()

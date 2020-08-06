@@ -5,6 +5,10 @@ function new_dir {
 	mkdir -p "$@" && cd "$@"
 }
 
+# creates a new virtualenv named "venv" and activates it
+function new_venv {
+	virtualenv -p python3 venv && source "venv/bin/activate"
+}
 
 # activates virtualenv from project root
 function activate {

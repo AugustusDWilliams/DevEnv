@@ -1,0 +1,71 @@
+#!python3
+import os
+import re
+import sys
+import shutil
+from pathlib import Path
+
+
+def get_project_name(path):
+    return path.name.lower()
+
+def check_if_dir_exists(project):
+    return project.exists()
+
+def get_version(filename):
+    with open(filename, "r") as file:
+        data = file.read()
+        regex = r"(\d+.\d+.\d+)"
+        match = re.search(regex, data).group(0)
+        return match
+
+def get_incremented_version(prev_version):
+    regex = r"(\d+).(\d+).(\d+)"
+    major, minor, patch = re.match(regex, prev_version).groups()
+    patch = int(patch) + 1
+    new_version = f"{major}.{minor}.{patch}"
+    return new_version
+
+def increment_version(filename, prev_version, new_version):
+    with open(filename, "r") as file:
+        data = file.read()
+        new_data = re.sub(prev_version, new_version, data)
+        file.close()
+    with open(filename, "w") as file:
+        file.write(new_data)
+        file.close
+    print(f"{filename} Updated")
+
+def update_version(filename):
+    prev_version = get_version(filename)
+    new_version = get_incremented_version(prev_version)
+    increment_version(filename, prev_version, new_version)
+
+def get_update_msg(project_name, filename):
+    prev_version = get_version(filename)
+    new_version = get_incremented_version(prev_version)
+    return f"Updated {project_name} from Version {prev_version} to Version {new_version}"
+
+def main():
+    root = Path(os.getcwd())
+    project_name = get_project_name(root)
+    project = root / project_name
+    project_exists = check_if_dir_exists(project)
+    if project_exists:
+        readme_file = root / "README.md"
+        init_file = project / "__init__.py"
+        setup_file = root / "setup.py"
+        update_msg = get_update_msg(project_name, init_file)
+        for filename in [readme_file, init_file, setup_file]:
+            try:
+                update_version(filename)
+            except Exception as err:
+                pass #print(err)
+        print(update_msg)
+        #prev_version = get_version(init_file)
+        #new_version = get_incremented_version(prev_version)
+        #update_version_number(init_file, prev_version, new_version)
+        #update_version_number(readme_file, prev_version, new_version)
+
+if __name__ == "__main__":
+    main()

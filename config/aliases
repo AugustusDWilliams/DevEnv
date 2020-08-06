@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
 # Shell Aliases
+## For Linux - With VSCode Installed
+alias open="code "
 alias rename=mv
 alias create=touch
 alias zshconfig="open ~/.zshrc"
@@ -52,5 +54,5 @@ alias gh='git hist '
 alias got='git '
 alias get='git '
 
-# User
-alias azkaban='open $HOME/Library/Vault'
+# User Aliases
+#alias azkaban='open $HOME/Library/Vault'
